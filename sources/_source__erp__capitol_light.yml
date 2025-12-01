@@ -1,0 +1,24 @@
+ sources:
+  - name: erp__capitol_light
+    loader: Fivetran
+    description: '{{ doc("_source__erp__capitol_light") }}'
+    database: source_mirror
+    schema: erp__capitol_light
+    
+    tables:
+      - name: product_attr_01
+        description: "Products from Capitol Light ERP"
+        columns: 
+          - name: _sys_id_product_attr_01
+            data_tests:
+              - not_null
+              - unique
+          - name: product_attr_01__name
+            data_tests:
+              - not_null
+          - name: product_attr_01__desc
+            description: "Product description."
+          - name: _modified
+            description: "Timestamp when the record was last modified."
+            data_tests:
+              - not_null

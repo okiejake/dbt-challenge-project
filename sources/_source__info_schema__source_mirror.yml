@@ -1,0 +1,53 @@
+ sources:
+  - name: info_schema__source_mirror
+    loader: Snowflake
+    description: '{{ doc("_source__info_schema__source_mirror") }}'
+    database: source_mirror
+    schema: information_schema 
+    
+    tables:
+#### Snowflake metadata tables
+      - name: columns
+        description: Metadata on all columns in tables and views in the database.
+        columns: 
+          - name: table_catalog 
+            data_tests:
+              - not_null
+          - name: table_schema 
+            data_tests:
+              - not_null
+          - name: table_name 
+            data_tests:
+              - not_null
+          - name: column_name 
+            data_tests:
+              - not_null
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments:
+                combination_of_columns:
+                  - table_catalog
+                  - table_schema
+                  - table_name
+                  - column_name
+
+      - name: tables
+        description: Metadata on all tables in the database.
+        columns: 
+          - name: table_catalog 
+            data_tests:
+              - not_null
+          - name: table_schema 
+            data_tests:
+              - not_null
+          - name: table_name 
+            data_tests:
+              - not_null
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments:
+                combination_of_columns:
+                  - table_catalog
+                  - table_schema
+                  - table_name
+              

@@ -1,0 +1,24 @@
+ sources:
+  - name: erp__rexel_gexpro
+    loader: Fivetran
+    description: '{{ doc("_source__erp__rexel_gexpro") }}'
+    database: source_mirror
+    schema: erp__rexel_gexpro 
+    
+    tables:
+      - name: products
+        description: "Products from Rexel/GexProd ERP"
+        columns: 
+          - name: id
+            data_tests:
+              - not_null
+              - unique
+          - name: name
+            data_tests:
+              - not_null
+          - name: desc_txt_280
+            description: "Product description."
+          - name: updt
+            description: "Timestamp when the record was last modified."
+            data_tests:
+              - not_null
