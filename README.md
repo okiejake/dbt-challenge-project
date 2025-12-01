@@ -4,7 +4,7 @@ This is a non-functioning mock dbt project used as a performance task for Analyt
 ## The Challenge
 This challenge is focused on dbt concepts and the candidate's aptitude for recognizing, understanding, and replicating dbt development patterns.
 
-Please **fork** this project and provide a link to the fork as your challenge submission.
+Please **fork/duplicate** this project and provide a link to your repo as your challenge submission.
 
 ### Prompt 1:
 The project is lacking documentation.
