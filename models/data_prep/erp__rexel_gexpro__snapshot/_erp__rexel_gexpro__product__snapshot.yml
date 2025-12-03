@@ -1,0 +1,36 @@
+models:
+  - name: erp__rexel_gexpro__product__snapshot
+    description: >
+          This snapshot creates a history table (SCD Type 2) of the erp__rexel_gexpro__product__standardized model.
+          Deleted records are invalidated by setting valid_to to current time. Updated records are captured by ending 
+          the previous record's validity (setting valid_to to current time) and creating a new record with valid_from 
+          set to current time and valid_to set to 9999-12-31 23:59:59.999.
+          The snapshot utilizes the **updt** column to identify records that have changed since the last snapshot.
+    columns:
+      - name: id
+        description: The unique identifier for each product.
+        data_tests:
+            - not_null
+      - name: name
+        description: The name of the product.
+        data_tests:
+            - not_null
+      - name: desc_txt_280
+        description: The description text of the product, limited to 280 characters.
+      - name: snapshot_key
+        description: A unique key generated for each snapshot row.
+        data_tests:
+            - unique
+            - not_null
+      - name: record_snapshot_at
+        description: The timestamp when the snapshot record was created.
+        data_tests:
+            - not_null
+      - name: valid_from
+        description: The timestamp indicating when the record became valid.
+        data_tests:
+            - not_null
+      - name: valid_to
+        description: The timestamp indicating when the record is no longer valid.
+        data_tests:
+            - not_null
