@@ -1,4 +1,4 @@
-{%- macro get_column_list_for_standardized_model(table,natural_key) -%}
+{%- macro get_column_list_for_standardized_model(table,natural_key, updated_at_col) -%}
 
             {{natural_key}} as id
             {% set nontime_columns = get_column_list_by_data_type(table,'nontime') -%}
@@ -31,6 +31,10 @@
                 , {{ correct_time(column_name) }}
             {% endfor -%}
             {%- endif -%}
+            {#--- Add updated_at column if it's not already named 'updated_at' ---#}
+            {% if updated_at_col and updated_at_col != 'updated_at' %}
+                , {{ correct_time(updated_at_col) }} as updated_at
+            {% endif %}
             , {{ correct_time(_fivetran_synced) }} as refreshed_at
 
 {%- endmacro -%}

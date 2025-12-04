@@ -13,7 +13,7 @@ snapshots:
       strategy: timestamp
       unique_key: id
       hard_deletes: invalidate
-      updated_at: updt
+      updated_at: updated_at
       dbt_valid_to_current: convert_timezone('America/New_York',to_timestamp('9999-12-31 23:59:59.999'))
       snapshot_meta_column_names:
         dbt_scd_id: snapshot_key
