@@ -2,12 +2,15 @@ macros:
   - name: get_column_list_by_data_type
     description: >
       This macro is utilized by the get_column_list_for_standardized_model macro to retrieve
-      a list of columns based on the provided data type group (set in the standardized_model macro),
-      excluding any fivetran metadata columns.
+      a list of columns based on the provided data type group(s) (set in the get_column_list_for_standardized_model macro),
+      excluding any fivetran metadata columns. It returns a single string of comma-separated column names.
     arguments:
       - name: table
         type: string
         description: The source table name for which to generate the standardized model query.
       - name: data_type_group
         type: string
-        description: 
+        description: Time, Date, or Other.
+      - name: dbt_source
+        type: string
+        description: the location of the information schema for the macro to filter from (hardcoded to info_schema__source_mirror).

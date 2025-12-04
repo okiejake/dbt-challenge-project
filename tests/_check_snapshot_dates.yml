@@ -1,0 +1,5 @@
+data_tests:
+  - name: check_snapshot_dates
+    description: >
+      For each id, snapshots must not have overlapping valid_from and valid_to
+      dates and must not have rows with identical valid_from and valid_to timestamps.

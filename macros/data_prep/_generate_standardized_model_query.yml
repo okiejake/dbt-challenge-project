@@ -2,7 +2,8 @@ macros:
   - name: generate_standardized_model_query
     description: >
       This macro generates a standardized SQL query for a specified table from a Fivetran source.
-      It relies on the get_column_list_for_standardized_model and get_column_list_by_data_type macros to automate the process of creating standardized models.
+      It relies on the correct_time, get_column_list_for_standardized_model and get_column_list_by_data_type
+      macros to automate the process of creating standardized models with consistent naming and ordering of columns.
     arguments:
       - name: table
         type: string

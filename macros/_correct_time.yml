@@ -1,0 +1,14 @@
+macros:
+  - name: correct_time
+    description: >
+      This macro converts a column to the correct timezone based on the project's
+      target timezone setting. It uses the Snowflake native CONVERT_TIMEZONE function
+      to perform the conversion. This ensures consistency in time data across different
+      models by standardizing all time-related columns to the same timezone.
+    arguments:
+      - name: column_name
+        type: string
+        description: The source column name that needs timezone correction.
+      - name: timezone
+        type: string
+        description: The target timezone to which the column should be converted.

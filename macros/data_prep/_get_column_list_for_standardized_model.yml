@@ -1,0 +1,17 @@
+macros:
+  - name: get_column_list_for_standardized_model
+    description: >
+      This macro generates a standardized list of columns for a model, 
+      beginning with the natural key and followed by a grouped, ordered set of columns based on their data types (nontime, date, time).
+      It uses helper macros to dynamically retrieve columns from the source table and formats them into a SELECT list.
+      For each data type group, it converts the array value from get_column_list_by_data_type to a string, converts this string into a 
+      comma-separated list, and checks if the list is exactly 1 column. If so it will return the single column string value.
+      If there is more than one column it executes a for loop to return each column as a new row in the select query.
+      For time columns, it applies a timezone conversion using the correct_time macro.
+    arguments:
+      - name: table
+        type: string
+        description: The source table name for which to generate the standardized model query.
+      - name: natural_key
+        type: string
+        description: The natural key from the source table.

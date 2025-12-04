@@ -1,7 +1,9 @@
 models:
   - name: erp__rexel_gexpro__product__snapshot
+    tests:
+      - check_snapshot_dates
     description: >
-          This snapshot creates a history table (SCD Type 2) of the erp__rexel_gexpro__product__standardized model.
+          This model/snapshot creates a history table (SCD Type 2) of the erp__rexel_gexpro__product__standardized model.
           Deleted records are invalidated by setting valid_to to current time. Updated records are captured by ending 
           the previous record's validity (setting valid_to to current time) and creating a new record with valid_from 
           set to current time and valid_to set to 9999-12-31 23:59:59.999.
