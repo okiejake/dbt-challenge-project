@@ -31,6 +31,6 @@
                 , {{ correct_time(column_name) }}
             {% endfor -%}
             {%- endif -%}
-            , convert_timezone('America/New_York', _fivetran_synced) as refreshed_at
+            , {{ correct_time(_fivetran_synced) }} as refreshed_at
 
 {%- endmacro -%}
