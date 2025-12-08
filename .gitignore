@@ -2,3 +2,4 @@ logs
 target
 dev.duckdb
 prod.duckdb
+.venv
